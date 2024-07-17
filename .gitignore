@@ -1,0 +1,31 @@
+# Ignore bundler config
+## Bundlerの設定ファイルを無視します。
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+## ログファイルと一時ファイルを無視します。ただし、.keepファイルは除外しません。
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore database.yml
+## データベースの設定ファイルを無視します。機密情報が含まれるためです。
+/config/database.yml
+
+# Ignore uploaded files in development
+## 開発環境でアップロードされたファイルを無視します。ただし、.keepファイルは除外しません。
+/storage/*
+!/storage/.keep
+
+# Ignore master key for decrypting credentials and more.
+## Railsのマスターキーを無視します。機密情報が含まれるためです。
+/config/master.key
+
+# Ignore node_modules
+## Node.jsの依存関係を無視します。これらは再インストール可能なため、バージョン管理に含める必要はありません。
+/node_modules
+
+# Ignore system-specific files
+## macOSのシステムファイルを無視します。
+.DS_Store
