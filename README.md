@@ -2,7 +2,8 @@
 ├── card.rb
 ├── deck.rb
 ├── users.rb
-└── main.rb
+├── game.rb
+├── gameprogress
 
 ##　クラス定義の大枠（未確定）
 　<カードclass>　 => card.rb
