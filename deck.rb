@@ -15,6 +15,6 @@ class Deck
     end
   
     def deal(num_users)
-      @cards.each_slice(num_users).to_a # カードを配布したいときに呼び出す
+      @cards.each_slice(@cards.size / num_users).to_a # カードを配布したいときに呼び出す
     end
 end
