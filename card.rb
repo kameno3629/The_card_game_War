@@ -16,7 +16,7 @@ class Card
     def initialize (suit, rank, value)
         @suit = suit
         @rank = rank
-        @value = value
+        @value = VALUES[rank]
     end
     # カードの情報を文字列で表示するメソッド
     def to_s
