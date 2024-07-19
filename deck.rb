@@ -17,7 +17,7 @@ class Deck
       @cards.shuffle!
     end
   
-    def deal(num_players)
-      @cards.each_slice(num_players).to_a # カードを配布したいときに呼び出す
+    def deal(num_users)
+      @cards.each_slice(num_users).to_a # カードを配布したいときに呼び出す
     end
 end
