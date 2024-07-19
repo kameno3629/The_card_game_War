@@ -13,14 +13,18 @@ class Card
         'J' => 11, 'Q' => 12, 'K' => 13
     }
     # initializedで初期化
-    def initialize (suit, rank, value)
+    def initialize (suit, rank)
         @suit = suit
         @rank = rank
-        @value = value
+        @value = VALUES[rank]
     end
     # カードの情報を文字列で表示するメソッド
     def to_s
         "#{@rank} of #{@suit}"
+    end
+    # 全てのカードを生成するクラスメソッド
+    def self.all_cards
+        SUITS.product(RANKS).map { |suit, rank| new(suit, rank) }
     end
 end
 
