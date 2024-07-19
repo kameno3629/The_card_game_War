@@ -12,6 +12,7 @@ class Game
       hands = @deck.deal(@users.size) # デッキからカードを配る
       @users.each_with_index do |user, index| # プレイヤーにカードを配る
         user.receive_cards(hands[index])
+      end
     end
     
     def play_round # ラウンドを行うメソッド
