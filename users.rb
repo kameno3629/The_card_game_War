@@ -5,7 +5,7 @@ class Users
     # attr_readerを設定し、手札とプレイヤーネームを引っ張れるようにする
     attr_reader :hand, :name
     # initializeメソッドでプレイヤーネームと手札を初期化
-    def initialized(name)
+    def initialize(name)
         @name = name # プレイヤーネームを設定
         @hand = [] # 手札を空の配列で初期化
     end
