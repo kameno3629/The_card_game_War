@@ -1,11 +1,18 @@
 # debugツールの定義
 require 'debug'
 
-class GameProgress
-  # プレイヤーの名前リストを受け取り、この場で使用するプレイヤーオブジェクトを作成
-  # デッキを生成し、カードを配ります。
-  # デッキからカードを配り、各プレイヤーに手札を与えます。
-  # 各プレイヤーがカードを1枚出し、そのカードを比較して勝者を決定します。
-  # 勝者が場に出されたカードをすべて獲得します。
-  # ゲームが終了するまでラウンドを繰り返します。
-end
+# 各ファイルの読み込み
+require_relative 'card'
+require_relative 'deck'
+require_relative 'player'
+require_relative 'game'
+
+# プレイヤーの名前の設定
+player_names = ['player1', 'player2']
+
+# ゲームを初期化
+game = Game.new(player_names)
+
+# ゲームを開始
+game.play_game
+
