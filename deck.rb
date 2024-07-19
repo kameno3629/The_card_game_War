@@ -6,10 +6,7 @@ class Deck
     attr_reader :cards # attr_readerで値を引っ張れるようにする
   
     def initialize
-      suits = Card.cards # スートを取得
-      ranks = Card.cards # ランクを取得
-       # スートとランクを組み合わせてカードを作成
-      @cards = suits.product(ranks).map { |suit, rank| Card.new(suit, rank) }
+        @cards = Card.all_cards # 全てのカードを取得
       shuffle # カードをシャッフルする
     end
   
