@@ -1,6 +1,8 @@
 # debugツールの定義
 require 'debug'
 
+require_relative 'card'
+
 # デッキの定義をするクラス
 class Deck
     attr_reader :cards # attr_readerで値を引っ張れるようにする
