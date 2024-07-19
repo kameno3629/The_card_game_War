@@ -3,7 +3,7 @@ require 'debug'
 
 class Game
     def initialize(user_names) # プレイヤーの名前リストを受け取り、プレイヤーオブジェクトを作成
-      @user_names = user_names.map { |name| User.new(name) }
+      @user_names = user_names.map { |name| Users.new(name) }
       @deck = Deck.new # デッキを生成
       deal_cards # カードを配ります
     end
