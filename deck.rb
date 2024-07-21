@@ -17,6 +17,8 @@ class Deck
     end
   
     def deal(num_users)
-      @cards.each_slice(@cards.size / num_users).to_a # カードを配布したいときに呼び出す
+        # カードの枚数にあまりが出た場合は捨て札として扱う
+        cards_to_deal = @cards.take(@cards.size - @cards.size % num_users)
+        cards_to_deal.each_slice(cards_to_deal.size / num_users).to_a
     end
 end

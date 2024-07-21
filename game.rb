@@ -47,7 +47,6 @@ class Game
   end
 
   def play_game # ゲームを行うメソッド
-    puts "戦争を開始します。" # ゲーム開始のメッセージを表示
     until @users.any? { |user| user.total_cards == 0 } # プレイヤーの手札がなくなるまでラウンドを繰り返す
       play_round # ラウンドを実行
     end

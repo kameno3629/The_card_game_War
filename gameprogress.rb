@@ -7,11 +7,27 @@ require_relative 'deck'
 require_relative 'users'
 require_relative 'game'
 
-# プレイヤーの名前の設定
-user_names = ['User1', 'User2', 'User3', 'User4']
+puts "戦争を開始します。" # ゲーム開始のメッセージを表示
+
+# プレイヤーの人数を入力
+num_users = 0
+until num_users.between?(2, 5)
+  print "プレイヤーの人数を入力してください（2〜5）: "
+  num_users = gets.to_i
+end
+
+# プレイヤーの名前を入力
+user_names = []
+num_users.times do |i|
+  print "プレイヤー#{i + 1}の名前を入力してください: "
+  user_names << gets.chomp
+end
 
 # ゲームを初期化
 game = Game.new(user_names)
+
+puts "カードが配られました。"
+puts "戦争！"
 
 # ゲームを開始
 game.play_game
