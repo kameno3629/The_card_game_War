@@ -22,19 +22,28 @@ class Game
     new_played_cards = @users.map { |user| [user, user.play_card] } # 各プレイヤーがカードを1枚出す
     played_cards.concat(new_played_cards) # 既に場に出ているカードに追加する
 
-    # 勝者を決定する
-    max_value = new_played_cards.map { |_, card| card.value }.max # 出されたカードの中で最大の値を取得
-    winners = new_played_cards.select { |_, card| card.value == max_value }.map { |user, _| user } # 最大の値を持つカードを出したプレイヤーを取得
+    # スペードのAが出たかどうかをチェック
+    spade_ace = new_played_cards.find { |_, card| card.suit == 'Spade' && card.rank == 'A' }
 
-    if winners.size > 1 # 引き分けの場合
-      puts "引き分けです。もう一枚カードを出します。" # 引き分けメッセージを表示
-      play_round(played_cards) # 引き分けの場合、再度カードを出す
+    if spade_ace
+      winner = spade_ace[0] # スペードのAを出したプレイヤーが勝者
     else
-      winner = winners.first # 勝者を決定
-      winner_cards = played_cards.map { |_, card| card } # 勝者のカードを配列で取得
-      winner.receive_cards(winner_cards) # 勝者にカードを配る
-      puts "#{winner.name}が勝ちました。" # 勝者の名前を表示
+      # 勝者を決定する
+      max_value = new_played_cards.map { |_, card| card.value }.max # 出されたカードの中で最大の値を取得
+      winners = new_played_cards.select { |user, card| card.value == max_value }.map { |user, _| user } # 最大の値を持つカードを出したプレイヤーを取得
+
+      if winners.size > 1 # 引き分けの場合
+        puts "引き分けです。もう一枚カードを出します。" # 引き分けメッセージを表示
+        play_round(played_cards) # 引き分けの場合、再度カードを出す
+        return
+      else
+        winner = winners.first # 勝者を決定
+      end
     end
+
+    winner_cards = played_cards.map { |_, card| card } # 勝者のカードを配列で取得
+    winner.receive_cards(winner_cards) # 勝者にカードを配る
+    puts "#{winner.name}が勝ちました。" # 勝者の名前を表示
   end
 
   def play_game # ゲームを行うメソッド
