@@ -7,10 +7,10 @@ class Card
     attr_reader :suit, :rank, :value
     # 配列スート、ランク、バリューをそれぞれ設定する。
     SUITS = ['Diamond', 'Spade', 'Heart', 'Club']
-    RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+    RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
     VALUES = {
-        'A' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9, '10' => 10,
-        'J' => 11, 'Q' => 12, 'K' => 13
+        '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9, '10' => 10,
+        'J' => 11, 'Q' => 12, 'K' => 13, 'A' => 14, 'Joker' => 15
     }
     # initializedで初期化
     def initialize (suit, rank)
@@ -24,7 +24,9 @@ class Card
     end
     # 全てのカードを生成するクラスメソッド
     def self.all_cards
-        SUITS.product(RANKS).map { |suit, rank| new(suit, rank) }
+        cards = SUITS.product(RANKS).map { |suit, rank| new(suit, rank) }
+        cards << new('None', 'Joker') # ジョーカーを1枚追加
+        cards
     end
 end
 
