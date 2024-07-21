@@ -19,6 +19,7 @@ class Game
   end
 
   def play_round(played_cards = []) # ラウンドを行うメソッド
+    puts "戦争！"
     new_played_cards = @users.map { |user| [user, user.play_card] } # 各プレイヤーがカードを1枚出す
     played_cards.concat(new_played_cards) # 既に場に出ているカードに追加する
 
@@ -50,6 +51,24 @@ class Game
     until @users.any? { |user| user.total_cards == 0 } # プレイヤーの手札がなくなるまでラウンドを繰り返す
       play_round # ラウンドを実行
     end
+
+    # 手札がなくなったプレイヤーを表示
+    loser = @users.find { |user| user.total_cards == 0 }
+    puts "#{loser.name}の手札がなくなりました。"
+
+    # 各プレイヤーの手札の枚数を表示
+    @users.each { |user| print "#{user.name}の手札の枚数は#{user.total_cards}枚です。" }
+
+    puts ''
+
+    # プレイヤーを手札の枚数でソートして順位を表示
+    sorted_users = @users.sort_by { |user| -user.total_cards }
+    sorted_users.each_with_index do |user, index|
+      print "#{user.name}が#{index + 1}位です。"
+    end
+
+    puts ''
+
     puts "戦争を終了します" # ゲーム終了のメッセージを表示
   end
 end

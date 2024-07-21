@@ -27,7 +27,6 @@ end
 game = Game.new(user_names)
 
 puts "カードが配られました。"
-puts "戦争！"
 
 # ゲームを開始
 game.play_game
